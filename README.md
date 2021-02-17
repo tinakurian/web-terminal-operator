@@ -45,6 +45,22 @@ This will build and push images defined by the environment variables `BUNDLE_IMG
 
 If you already have the index image pushed to your registry, then you can use the `make install` or `make register_catalogsource` rules with the environment variables defined above to install those images on the cluster.
 
+## Configuring the custom default container
+
+As cluster admin you're able to configure the default container that is used in terminal's devworkspaces with the following entry in configmap:
+```bash
+oc patch configmap devworkspace-controller -n openshift-operators --patch "
+data:
+  devworkspace.default_dockerimage.redhat-developer.web-terminal: |
+    memoryLimit: 128Mi
+    container:
+      name: dev
+      image: quay.io/wto/web-terminal-tooling:1.0.0
+      command: ['tail']
+      args: ['-f', '/dev/null']
+"
+```
+
 ## Removing the operator from a cluster
 
 To remove the WebTerminal Operator and the CatalogSource use
