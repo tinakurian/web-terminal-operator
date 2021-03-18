@@ -328,7 +328,7 @@ spec:
                   value: quay.io/wto/web-terminal-tooling:latest
                 - name: RELATED_IMAGE_devworkspace_webhook_server
                   value: quay.io/devfile/devworkspace-controller:v1.0.0-alphax
-                image: quay.io/devfile/devworkspace-controller:v1.0.0-alphax
+                image: quay.io/tkurian/devworkspace-controller:trying
                 imagePullPolicy: Always
                 name: devworkspace-controller
                 resources: {}
